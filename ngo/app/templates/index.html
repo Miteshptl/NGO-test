@@ -1,0 +1,893 @@
+{% extends 'base.html' %} {% load static %}
+
+{% block title %}Home - Helping Hands{% endblock %}
+
+{% block content %}
+    <!-- Hero Section -->
+    <section class="hero-section" id="home">
+        <div class="container">
+            <h1 class="display-4 fw-bold mb-4">Together We Can Make a Difference</h1>
+            <p class="lead mb-5">Join us in our mission to create positive change in communities around the world.</p>
+            <div class="d-flex justify-content-center gap-3">
+                <a href="#donate" class="btn btn-primary btn-lg px-4">Donate Now</a>
+                <a href="#volunteer" class="btn btn-outline-light btn-lg px-4">Volunteer</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="py-5" id="about">
+        <div class="container">
+            <h2 class="section-title text-center">About Us</h2>
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1171&q=80" alt="About Us" class="img-fluid rounded">
+                </div>
+                <div class="col-lg-6">
+                    <h3 class="mb-4">Who We Are</h3>
+                    <p>Helping Hands is a non-profit organization dedicated to improving lives and building sustainable communities through education, healthcare, and economic empowerment initiatives.</p>
+                    <p>Founded in 2010, we have impacted over 1 million lives across 15 countries through our various programs and initiatives. Our team of dedicated professionals and volunteers work tirelessly to create lasting change.</p>
+                    <div class="row mt-4">
+                        <div class="col-md-6 mb-3">
+                            <div class="d-flex align-items-center">
+                                <div class="me-3">
+                                    <i class="fas fa-check-circle text-primary fs-4"></i>
+                                </div>
+                                <div>
+                                    <h6 class="mb-0">Transparent</h6>
+                                    <p class="mb-0 small">100% donation policy</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="d-flex align-items-center">
+                                <div class="me-3">
+                                    <i class="fas fa-check-circle text-primary fs-4"></i>
+                                </div>
+                                <div>
+                                    <h6 class="mb-0">Accountable</h6>
+                                    <p class="mb-0 small">Regular impact reports</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="d-flex align-items-center">
+                                <div class="me-3">
+                                    <i class="fas fa-check-circle text-primary fs-4"></i>
+                                </div>
+                                <div>
+                                    <h6 class="mb-0">Effective</h6>
+                                    <p class="mb-0 small">Proven programs</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="d-flex align-items-center">
+                                <div class="me-3">
+                                    <i class="fas fa-check-circle text-primary fs-4"></i>
+                                </div>
+                                <div>
+                                    <h6 class="mb-0">Compassionate</h6>
+                                    <p class="mb-0 small">People-first approach</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#about-page" class="btn btn-primary mt-3">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Counter Section -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-6">
+                    <div class="counter-box">
+                        <div class="counter">1M+</div>
+                        <p>Lives Impacted</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="counter-box">
+                        <div class="counter">15</div>
+                        <p>Countries</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="counter-box">
+                        <div class="counter">500+</div>
+                        <p>Projects</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="counter-box">
+                        <div class="counter">10K+</div>
+                        <p>Volunteers</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Work Section -->
+    <section class="py-5" id="work">
+        <div class="container">
+            <h2 class="section-title text-center">Our Work</h2>
+            <p class="text-center mb-5">We focus on key areas that create the most impact in communities</p>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" class="card-img-top" alt="Education">
+                        <div class="card-body">
+                            <h5 class="card-title">Education</h5>
+                            <p class="card-text">Building schools, training teachers, and providing scholarships to ensure every child has access to quality education.</p>
+                            <a href="#education" class="btn btn-sm btn-primary">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" class="card-img-top" alt="Healthcare">
+                        <div class="card-body">
+                            <h5 class="card-title">Healthcare</h5>
+                            <p class="card-text">Establishing clinics, vaccination programs, and health education to improve community health outcomes.</p>
+                            <a href="#healthcare" class="btn btn-sm btn-primary">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" class="card-img-top" alt="Economic Empowerment">
+                        <div class="card-body">
+                            <h5 class="card-title">Economic Empowerment</h5>
+                            <p class="card-text">Providing microloans, vocational training, and business development support to create sustainable livelihoods.</p>
+                            <a href="#economic" class="btn btn-sm btn-primary">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="py-5 bg-light" id="projects">
+        <div class="container">
+            <h2 class="section-title text-center">Featured Projects</h2>
+            <p class="text-center mb-5">Some of our current initiatives making a difference</p>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="card project-card h-100">
+                        <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" class="card-img-top" alt="Project 1">
+                        <div class="card-body">
+                            <h5 class="card-title">Clean Water Initiative</h5>
+                            <p class="card-text">Providing clean drinking water to rural communities through well construction and water purification systems.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <span class="text-primary fw-bold">$25,000</span> raised of <span class="text-muted">$50,000</span>
+                                </div>
+                                <span class="badge bg-primary">Ongoing</span>
+                            </div>
+                            <div class="progress">
+                                <div class="progress-bar" style="width: 50%"></div>
+                            </div>
+                            <a href="#project1" class="btn btn-sm btn-primary mt-3">Support This Project</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card project-card h-100">
+                        <img src="https://images.unsplash.com/photo-1524179091875-bf99a9a6af57?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" class="card-img-top" alt="Project 2">
+                        <div class="card-body">
+                            <h5 class="card-title">Girls Education Program</h5>
+                            <p class="card-text">Scholarships and mentorship for girls in underserved communities to complete their secondary education.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <span class="text-primary fw-bold">$75,000</span> raised of <span class="text-muted">$100,000</span>
+                                </div>
+                                <span class="badge bg-primary">Ongoing</span>
+                            </div>
+                            <div class="progress">
+                                <div class="progress-bar" style="width: 75%"></div>
+                            </div>
+                            <a href="#project2" class="btn btn-sm btn-primary mt-3">Support This Project</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card project-card h-100">
+                        <img src="https://images.unsplash.com/photo-1573497491765-dccce02b29df?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1169&q=80" class="card-img-top" alt="Project 3">
+                        <div class="card-body">
+                            <h5 class="card-title">Disaster Relief Fund</h5>
+                            <p class="card-text">Emergency response and recovery support for communities affected by natural disasters.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <span class="text-primary fw-bold">$120,000</span> raised of <span class="text-muted">$200,000</span>
+                                </div>
+                                <span class="badge bg-primary">Ongoing</span>
+                            </div>
+                            <div class="progress">
+                                <div class="progress-bar" style="width: 60%"></div>
+                            </div>
+                            <a href="#project3" class="btn btn-sm btn-primary mt-3">Support This Project</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <a href="#all-projects" class="btn btn-primary">View All Projects</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-5">
+        <div class="container">
+            <h2 class="section-title text-center">What People Say</h2>
+            <p class="text-center mb-5">Hear from those whose lives we've touched</p>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="testimonial-card h-100">
+                        <p class="mb-4">"Thanks to Helping Hands, my daughter can now attend school regularly. The scholarship program has changed our lives forever."</p>
+                        <div class="testimonial-author">
+                            <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Testimonial Author">
+                            <div>
+                                <h6 class="mb-0">Maria Rodriguez</h6>
+                                <p class="mb-0 small text-muted">Parent, Mexico</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="testimonial-card h-100">
+                        <p class="mb-4">"The vocational training I received helped me start my own tailoring business. I'm now able to support my family with dignity."</p>
+                        <div class="testimonial-author">
+                            <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Testimonial Author">
+                            <div>
+                                <h6 class="mb-0">James Okello</h6>
+                                <p class="mb-0 small text-muted">Entrepreneur, Kenya</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="testimonial-card h-100">
+                        <p class="mb-4">"Volunteering with Helping Hands has been the most rewarding experience of my life. Seeing the impact firsthand is incredible."</p>
+                        <div class="testimonial-author">
+                            <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Testimonial Author">
+                            <div>
+                                <h6 class="mb-0">Sarah Johnson</h6>
+                                <p class="mb-0 small text-muted">Volunteer, USA</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Donate Section -->
+    <section class="py-5 bg-primary text-white" id="donate">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <h2 class="mb-4">Your Support Makes a Difference</h2>
+                    <p>Every donation, no matter the size, helps us continue our vital work in communities around the world. 100% of your donation goes directly to programs.</p>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><i class="fas fa-check-circle me-2"></i> $25 provides school supplies for one child</li>
+                        <li class="mb-2"><i class="fas fa-check-circle me-2"></i> $50 provides clean water for a family for a month</li>
+                        <li class="mb-2"><i class="fas fa-check-circle me-2"></i> $100 provides vocational training for one person</li>
+                        <li><i class="fas fa-check-circle me-2"></i> $500 helps build a classroom</li>
+                    </ul>
+                </div>
+                <div class="col-lg-6">
+                    <div class="donation-form">
+                        <h4 class="mb-4 text-center">Make a Donation</h4>
+                        <form>
+                            <div class="mb-3">
+                                <label class="form-label">Amount (USD)</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">$</span>
+                                    <input type="number" class="form-control" placeholder="Enter amount" min="1">
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Donation Type</label>
+                                <select class="form-select">
+                                    <option selected>One-time donation</option>
+                                    <option>Monthly donation</option>
+                                    <option>In honor/memory of someone</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Payment Method</label>
+                                <div class="d-flex gap-3">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="payment" id="creditCard" checked>
+                                        <label class="form-check-label" for="creditCard">
+                                            <i class="fab fa-cc-visa me-1"></i>
+                                            <i class="fab fa-cc-mastercard me-1"></i>
+                                            <i class="fab fa-cc-amex"></i>
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="payment" id="paypal">
+                                        <label class="form-check-label" for="paypal">
+                                            <i class="fab fa-cc-paypal"></i>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-accent w-100">Donate Now</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section class="py-5" id="blog">
+        <div class="container">
+            <h2 class="section-title text-center">Latest News</h2>
+            <p class="text-center mb-5">Stories from the field and updates on our work</p>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="card blog-card h-100">
+                        <div class="position-relative">
+                            <img src="https://images.unsplash.com/photo-1522205408450-add114ad53fe?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" class="card-img-top" alt="Blog Post">
+                            <div class="blog-date">Jun 15, 2023</div>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">New School Opens in Rural Kenya</h5>
+                            <p class="card-text">Our latest education project brings hope to a community that previously had no access to formal schooling.</p>
+                            <a href="#blog1" class="btn btn-sm btn-primary">Read More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card blog-card h-100">
+                        <div class="position-relative">
+                            <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" class="card-img-top" alt="Blog Post">
+                            <div class="blog-date">May 28, 2023</div>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Women's Empowerment Program Success</h5>
+                            <p class="card-text">Graduates from our vocational training program share how it transformed their lives and livelihoods.</p>
+                            <a href="#blog2" class="btn btn-sm btn-primary">Read More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card blog-card h-100">
+                        <div class="position-relative">
+                            <img src="https://images.unsplash.com/photo-1521791055366-0d553872125f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1169&q=80" class="card-img-top" alt="Blog Post">
+                            <div class="blog-date">Apr 10, 2023</div>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Annual Impact Report Released</h5>
+                            <p class="card-text">See how your support made a difference in 2022 through our comprehensive annual report.</p>
+                            <a href="#blog3" class="btn btn-sm btn-primary">Read More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <a href="#all-blogs" class="btn btn-primary">View All News</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Media Section -->
+    <section class="py-5 bg-light" id="media">
+        <div class="container">
+            <h2 class="section-title text-center">Media Gallery</h2>
+            <p class="text-center mb-5">See our work in action through photos and videos</p>
+            <div class="row">
+                <div class="col-md-4 col-6 mb-4">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Gallery Image">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-6 mb-4">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1524179091875-bf99a9a6af57?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Gallery Image">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-6 mb-4">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1573497491765-dccce02b29df?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1169&q=80" alt="Gallery Image">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-6 mb-4">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1522205408450-add114ad53fe?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Gallery Image">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-6 mb-4">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Gallery Image">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-6 mb-4">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1521791055366-0d553872125f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1169&q=80" alt="Gallery Image">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <a href="#all-media" class="btn btn-primary">View Full Gallery</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Volunteer Section -->
+    <section class="py-5" id="volunteer">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <h2 class="mb-4">Join Our Volunteer Team</h2>
+                    <p>Volunteers are the backbone of our organization. Whether you can give a few hours a week or want to join us on a project abroad, we have opportunities to match your skills and availability.</p>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i> Local community volunteering</li>
+                        <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i> Professional skills volunteering</li>
+                        <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i> International volunteer trips</li>
+                        <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i> Virtual volunteering opportunities</li>
+                        <li><i class="fas fa-check-circle text-primary me-2"></i> Corporate volunteer programs</li>
+                    </ul>
+                    <div class="mt-4">
+                        <h5>Upcoming Volunteer Events</h5>
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="bg-primary text-white rounded p-2 me-3 text-center" style="width: 60px;">
+                                <div class="fw-bold">15</div>
+                                <div class="small">JUN</div>
+                            </div>
+                            <div>
+                                <h6 class="mb-0">Community Cleanup Day</h6>
+                                <p class="mb-0 small text-muted">Downtown Area, 9am-12pm</p>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <div class="bg-primary text-white rounded p-2 me-3 text-center" style="width: 60px;">
+                                <div class="fw-bold">22</div>
+                                <div class="small">JUN</div>
+                            </div>
+                            <div>
+                                <h6 class="mb-0">Food Packing Event</h6>
+                                <p class="mb-0 small text-muted">Central Warehouse, 10am-2pm</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="volunteer-form">
+                        <h4 class="mb-4 text-center">Volunteer Application</h4>
+                        <form>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">First Name</label>
+                                    <input type="text" class="form-control" placeholder="First Name">
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Last Name</label>
+                                    <input type="text" class="form-control" placeholder="Last Name">
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Email</label>
+                                <input type="email" class="form-control" placeholder="Email">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Phone</label>
+                                <input type="tel" class="form-control" placeholder="Phone">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Volunteer Interest</label>
+                                <select class="form-select">
+                                    <option selected>Select an option</option>
+                                    <option>Local Community Volunteering</option>
+                                    <option>Professional Skills Volunteering</option>
+                                    <option>International Volunteer Trip</option>
+                                    <option>Virtual Volunteering</option>
+                                    <option>Corporate Volunteer Program</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Tell us about your skills and interests</label>
+                                <textarea class="form-control" rows="3" placeholder="Your message"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100">Submit Application</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="py-5 bg-light" id="contact">
+        <div class="container">
+            <h2 class="section-title text-center">Contact Us</h2>
+            <p class="text-center mb-5">We'd love to hear from you. Get in touch with any questions or to learn more about our work.</p>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="contact-info-box h-100">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <h5>Our Office</h5>
+                        <p>123 Helping Street<br>New York, NY 10001<br>United States</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="contact-info-box h-100">
+                        <i class="fas fa-envelope"></i>
+                        <h5>Email Us</h5>
+                        <p>info@helpinghands.org<br>donations@helpinghands.org<br>volunteer@helpinghands.org</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="contact-info-box h-100">
+                        <i class="fas fa-phone-alt"></i>
+                        <h5>Call Us</h5>
+                        <p>+1 (555) 123-4567<br>Monday - Friday<br>9am - 5pm EST</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <div class="map-container" style="overflow:hidden;border-radius:10px;">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.2152566274666!2d-73.9878449241644!3d40.74844097138893!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259a9b3117469%3A0xd134e199a405a163!2sEmpire%20State%20Building!5e0!3m2!1sen!2sus!4v1686782881231!5m2!1sen!2sus" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="contact-form bg-white p-4 rounded">
+                        <h4 class="mb-4">Send Us a Message</h4>
+                        <form>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Name</label>
+                                    <input type="text" class="form-control" placeholder="Your Name">
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Email</label>
+                                    <input type="email" class="form-control" placeholder="Your Email">
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Subject</label>
+                                <input type="text" class="form-control" placeholder="Subject">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Message</label>
+                                <textarea class="form-control" rows="5" placeholder="Your Message"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="py-5 bg-primary text-white">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <h3 class="mb-3">Stay Updated</h3>
+                    <p class="mb-0">Subscribe to our newsletter to receive updates on our projects, events, and how you can help.</p>
+                </div>
+                <div class="col-lg-6">
+                    <form class="d-flex">
+                        <input type="email" class="form-control me-2" placeholder="Your Email">
+                        <button type="submit" class="btn btn-accent">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    <!-- About Page (hidden by default, shown when navigating to about) -->
+    <div id="about-page" style="display: none;">
+        <div class="page-header">
+            <div class="container">
+                <h1 class="display-5 fw-bold mb-3">About Us</h1>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#home">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">About Us</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+        <section class="py-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 mb-4 mb-lg-0">
+                        <h3 class="mb-4">Our Story</h3>
+                        <p>Helping Hands was founded in 2010 by a group of passionate individuals who wanted to make a tangible difference in the lives of the less fortunate. What started as a small local initiative has grown into an international organization with operations in 15 countries.</p>
+                        <p>Our journey began with providing basic necessities to homeless individuals in our community. As we grew, we expanded our focus to address root causes of poverty through education, healthcare, and economic empowerment programs.</p>
+                        <p>Today, we're proud to have impacted over 1 million lives through our various initiatives, and we're just getting started. Our work is made possible by the generosity of donors, the dedication of volunteers, and the resilience of the communities we serve.</p>
+                    </div>
+                    <div class="col-lg-6">
+                        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Our Team" class="img-fluid rounded">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="py-5 bg-light">
+            <div class="container">
+                <h3 class="section-title text-center mb-5">Our Team</h3>
+                <div class="row">
+                    <div class="col-md-4 mb-4">
+                        <div class="card h-100">
+                            <img src="https://randomuser.me/api/portraits/women/43.jpg" class="card-img-top" alt="Team Member">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">Sarah Johnson</h5>
+                                <p class="text-primary mb-2">Founder & CEO</p>
+                                <p class="card-text">Sarah founded Helping Hands after witnessing the struggles of homeless individuals while working as a social worker.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="card h-100">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" class="card-img-top" alt="Team Member">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">Michael Chen</h5>
+                                <p class="text-primary mb-2">Director of Programs</p>
+                                <p class="card-text">Michael oversees all program implementation and ensures our initiatives create maximum impact.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="card h-100">
+                            <img src="https://randomuser.me/api/portraits/women/28.jpg" class="card-img-top" alt="Team Member">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">Aisha Mohammed</h5>
+                                <p class="text-primary mb-2">Director of Operations</p>
+                                <p class="card-text">Aisha manages our day-to-day operations and ensures our resources are used efficiently.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="py-5">
+            <div class="container">
+                <h3 class="section-title text-center mb-5">Our Approach</h3>
+                <div class="row">
+                    <div class="col-md-4 mb-4">
+                        <div class="card h-100 border-0 shadow-sm">
+                            <div class="card-body text-center">
+                                <div class="bg-primary text-white rounded-circle mx-auto mb-4" style="width: 80px; height: 80px; display: flex; align-items: center; justify-content: center;">
+                                    <i class="fas fa-users fs-3"></i>
+                                </div>
+                                <h5>Community-Led</h5>
+                                <p>We work with local communities to identify needs and develop solutions that are culturally appropriate and sustainable.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="card h-100 border-0 shadow-sm">
+                            <div class="card-body text-center">
+                                <div class="bg-primary text-white rounded-circle mx-auto mb-4" style="width: 80px; height: 80px; display: flex; align-items: center; justify-content: center;">
+                                    <i class="fas fa-chart-line fs-3"></i>
+                                </div>
+                                <h5>Evidence-Based</h5>
+                                <p>Our programs are designed based on research and data to ensure they effectively address the challenges we aim to solve.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="card h-100 border-0 shadow-sm">
+                            <div class="card-body text-center">
+                                <div class="bg-primary text-white rounded-circle mx-auto mb-4" style="width: 80px; height: 80px; display: flex; align-items: center; justify-content: center;">
+                                    <i class="fas fa-hand-holding-heart fs-3"></i>
+                                </div>
+                                <h5>Compassionate</h5>
+                                <p>We treat every individual with dignity and respect, recognizing the unique circumstances that led them to need assistance.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Projects Page (hidden by default, shown when navigating to projects) -->
+    <div id="projects-page" style="display: none;">
+        <div class="page-header">
+            <div class="container">
+                <h1 class="display-5 fw-bold mb-3">Our Projects</h1>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#home">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Our Projects</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+        <section class="py-5">
+            <div class="container">
+                <div class="row mb-5">
+                    <div class="col-md-6 mb-3 mb-md-0">
+                        <h3>Making an Impact Through Our Projects</h3>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="d-flex">
+                            <select class="form-select me-2">
+                                <option>Filter by Category</option>
+                                <option>Education</option>
+                                <option>Healthcare</option>
+                                <option>Economic Empowerment</option>
+                                <option>Disaster Relief</option>
+                                <option>Clean Water</option>
+                            </select>
+                            <select class="form-select">
+                                <option>Filter by Status</option>
+                                <option>Ongoing</option>
+                                <option>Completed</option>
+                                <option>Upcoming</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 mb-4">
+                        <div class="card project-card h-100">
+                            <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" class="card-img-top" alt="Project 1">
+                            <div class="card-body">
+                                <span class="badge bg-primary mb-2">Ongoing</span>
+                                <h5 class="card-title">Clean Water Initiative</h5>
+                                <p class="card-text">Providing clean drinking water to rural communities through well construction and water purification systems.</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <span class="text-primary fw-bold">$25,000</span> raised of <span class="text-muted">$50,000</span>
+                                    </div>
+                                </div>
+                                <div class="progress mt-2">
+                                    <div class="progress-bar" style="width: 50%"></div>
+                                </div>
+                                <a href="#project1" class="btn btn-sm btn-primary mt-3">Learn More</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="card project-card h-100">
+                            <img src="https://images.unsplash.com/photo-1524179091875-bf99a9a6af57?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" class="card-img-top" alt="Project 2">
+                            <div class="card-body">
+                                <span class="badge bg-primary mb-2">Ongoing</span>
+                                <h5 class="card-title">Girls Education Program</h5>
+                                <p class="card-text">Scholarships and mentorship for girls in underserved communities to complete their secondary education.</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <span class="text-primary fw-bold">$75,000</span> raised of <span class="text-muted">$100,000</span>
+                                    </div>
+                                </div>
+                                <div class="progress mt-2">
+                                    <div class="progress-bar" style="width: 75%"></div>
+                                </div>
+                                <a href="#project2" class="btn btn-sm btn-primary mt-3">Learn More</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="card project-card h-100">
+                            <img src="https://images.unsplash.com/photo-1573497491765-dccce02b29df?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1169&q=80" class="card-img-top" alt="Project 3">
+                            <div class="card-body">
+                                <span class="badge bg-primary mb-2">Ongoing</span>
+                                <h5 class="card-title">Disaster Relief Fund</h5>
+                                <p class="card-text">Emergency response and recovery support for communities affected by natural disasters.</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <span class="text-primary fw-bold">$120,000</span> raised of <span class="text-muted">$200,000</span>
+                                    </div>
+                                </div>
+                                <div class="progress mt-2">
+                                    <div class="progress-bar" style="width: 60%"></div>
+                                </div>
+                                <a href="#project3" class="btn btn-sm btn-primary mt-3">Learn More</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="card project-card h-100">
+                            <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" class="card-img-top" alt="Project 4">
+                            <div class="card-body">
+                                <span class="badge bg-success mb-2">Completed</span>
+                                <h5 class="card-title">School Construction Project</h5>
+                                <p class="card-text">Built a new primary school in a rural village, providing education to 200 children who previously had no access.</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <span class="text-primary fw-bold">$80,000</span> raised of <span class="text-muted">$80,000</span>
+                                    </div>
+                                </div>
+                                <div class="progress mt-2">
+                                    <div class="progress-bar" style="width: 100%"></div>
+                                </div>
+                                <a href="#project4" class="btn btn-sm btn-primary mt-3">Learn More</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="card project-card h-100">
+                            <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" class="card-img-top" alt="Project 5">
+                            <div class="card-body">
+                                <span class="badge bg-success mb-2">Completed</span>
+                                <h5 class="card-title">Mobile Health Clinic</h5>
+                                <p class="card-text">Provided free medical care to 5,000 people in remote areas through our mobile health clinic initiative.</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <span class="text-primary fw-bold">$60,000</span> raised of <span class="text-muted">$60,000</span>
+                                    </div>
+                                </div>
+                                <div class="progress mt-2">
+                                    <div class="progress-bar" style="width: 100%"></div>
+                                </div>
+                                <a href="#project5" class="btn btn-sm btn-primary mt-3">Learn More</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="card project-card h-100">
+                            <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" class="card-img-top" alt="Project 6">
+                            <div class="card-body">
+                                <span class="badge bg-warning mb-2">Upcoming</span>
+                                <h5 class="card-title">Women's Entrepreneurship Program</h5>
+                                <p class="card-text">Training and microloans for women to start their own businesses and achieve financial independence.</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <span class="text-primary fw-bold">$10,000</span> raised of <span class="text-muted">$75,000</span>
+                                    </div>
+                                </div>
+                                <div class="progress mt-2">
+                                    <div class="progress-bar" style="width: 13%"></div>
+                                </div>
+                                <a href="#project6" class="btn btn-sm btn-primary mt-3">Learn More</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <nav aria-label="Page navigation" class="mt-5">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#" tabindex="-1">Previous</a>
+                        </li>
+                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">Next</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </section>
+    </div>
+
+    <!-- Blog Page (hidden by default, shown when navigating to blog) -->
+    <div id="blog-page" style="display: none;">
+        <div class="page-header">
+            <div class="container">
+                <h1 class="display-5 fw-bold mb-3">Our Blog</h1>
+                </nav>
+{% endblock %}               

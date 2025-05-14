@@ -1,0 +1,45 @@
+{% extends "base.html" %}{% load static %}
+
+{% block title %}NGO | Sign-UP{% endblock %}
+
+{% block content %}
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 90vh;">
+    <div class="card shadow p-4" style="width: 100%; max-width: 450px;">
+        {% if errmsg %}
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>Error!</strong> {{errmsg}}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endif %}
+
+        <h3 class="text-center mb-4">Sign Up</h3>
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="username" name="uname" placeholder="Username" required>
+                <label for="username">Username</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="email" class="form-control" id="email" name="uemail" placeholder="Email" required>
+                <label for="email">Email</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="password" class="form-control" id="password1" name="upass" placeholder="Password" required>
+                <label for="password1">Password</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="password" class="form-control" id="password2" name="ucpass" placeholder="Confirm Password" required>
+                <label for="password2">Confirm Password</label>
+            </div>
+
+            <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-success">Sign Up</button>
+                <a href="{% url 'index' %}" class="btn btn-outline-secondary">Cancel</a>
+            </div>
+
+           
+            <p class="mt-4 text-center">Already have an account? <a href="{% url 'signin' %}">Sign In</a></p>
+        </form>
+    </div>
+</div>
+{% endblock %}
