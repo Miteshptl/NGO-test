@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, HttpResponse,  get_object_or_404
 from django.contrib.auth import authenticate, login, logout
-from django.core.exceptions import ValidationError
+from .models import User, Contact, Media, Blog, Project, Donation, OurWork, Profile, Task
+
 from django.core.exceptions import ValidationError
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
@@ -19,45 +20,83 @@ import random
 import razorpay
 # Create your views here.
 
-from django.shortcuts import render
-
+# index views
 def index(request):
-    return render(request, 'index.html')
+    blogs=Blog.objects.filter(published=True).order_by('-id')[:3]
+    projects=Project.objects.filter(is_active=True).order_by('-id')[:3]
+    media=Media.objects.all().order_by('-id')[:3]
+    our_work=OurWork.objects.all().order_by('-id')[:3]
+    context = {
+        'blogs': blogs,
+        'projects': projects,
+        'media': media,
+        'our_work': our_work,
+    }
+    return render(request, 'index.html',context)
 
+# about views
 def about(request):
     return render(request, 'about.html')
 
+# our_work views
 def our_work(request):
-    return render(request, 'our_work.html')
+    ourwork=OurWork.objects.all().order_by('-id')
+    context = {
+        'ourwork': ourwork,
+    }
+    return render(request, 'our_work.html',context)
 
+# projects views
 def projects(request):
-    return render(request, 'projects.html')
+    projects=Project.objects.filter(is_active=True).order_by('-id')
+    context = {
+        'projects': projects,
+    }
+    return render(request, 'projects.html',context)
 
+# media views
 def media(request):
-    return render(request, 'media.html')
+    media=Media.objects.all().order_by('-id')
+    context = {
+        'media': media,
+    }
+    return render(request, 'media.html',context)
 
+# volunteer views
 def volunteer(request):
     return render(request, 'volunteer.html')
 
+# blogs views
 def blogs(request):
-    return render(request, 'blogs.html')
+    blogs=Blog.objects.filter(published=True).order_by('-id')
+    context = {
+        'blogs': blogs,
+    }
+    return render(request, 'blogs.html',context)
 
+# contact views
 def contact(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        subject = request.POST.get('subject')
+        message = request.POST.get('message')
+        Contact.objects.create(name=name, email=email, subject=subject, message=message)
+        return redirect('contact')
     return render(request, 'contact.html')
 
+# donate views
 def donate(request):
-    if request.method == "POST":
-        # Placeholder for payment logic
-        amount = request.POST.get("amount")
-        purpose = request.POST.get("purpose")
-        print(f"Donation initiated: ₹{amount} for {purpose}")
+    if request.method == 'POST':
+        amount = request.POST.get('amount')
+        message = request.POST.get('message', '')
+        is_anonymous = request.POST.get('anonymous', False)
+        Donation.objects.create(amount=amount, message=message, is_anonymous=is_anonymous)
+        return redirect('donate')
     return render(request, 'donate.html')
 
 
-
-
 # Validation 
-
 def validate_password(password):
     # Check minimum length
     if len(password) < 8:
@@ -107,70 +146,90 @@ def validate_password(password):
         raise ValidationError("This password is too common. Please choose another one.")
 
 
-def signup(req):
-    print(req.method)
+from django.shortcuts import render, redirect
+from django.contrib.auth.password_validation import validate_password
+from django.core.exceptions import ValidationError
+from .models import User  # or use `from django.contrib.auth.models import User` if using default User model
+
+def signup(request):
     context = {}
-    if req.method == "GET":
-        return render(req, "signup.html")
-    else:
-        print(req.method)
-        uname = req.POST["uname"]
-        uemail= req.POST["uemail"]
-        upass = req.POST["upass"]
-        ucpass = req.POST["ucpass"]
-        print(uname, upass, ucpass)
+    if request.method == "GET":
+        return render(request, "signup.html")
 
-        try:
-            validate_password(upass)
-        except ValidationError as e:
-            context["errmsg"] = str(e)
-            return render(req, "signup.html", context)
+    # POST handling
+    uname = request.POST.get("uname", "").strip()
+    uemail = request.POST.get("uemail", "").strip()
+    upass = request.POST.get("upass", "")
+    ucpass = request.POST.get("ucpass", "")
 
-        if uname == "" or upass == "" or ucpass == "":
-            context["errmsg"] = "Field can't be empty"
-            return render(req, "signup.html", context)
-        elif upass != ucpass:
-            context["errmsg"] = "Password and confirm password doesn't match"
-            return render(req, "signup.html", context)
-        elif uname.isdigit():
-            context["errmsg"] = "Username can't be only number"
-            return render(req, "signup.html", context)
-        elif upass == uname:
-            context["errmsg"] = "Password cannot same as username"
-            return render(req, "signup.html", context)
+    # Field validations
+    if not uname or not uemail or not upass or not ucpass:
+        context["errmsg"] = "All fields are required."
+        return render(request, "signup.html", context)
+
+    if upass != ucpass:
+        context["errmsg"] = "Passwords do not match."
+        return render(request, "signup.html", context)
+
+    if uname.isdigit():
+        context["errmsg"] = "Username cannot be all numbers."
+        return render(request, "signup.html", context)
+
+    if upass == uname:
+        context["errmsg"] = "Password cannot be the same as username."
+        return render(request, "signup.html", context)
+
+    # Password validation
+    try:
+        validate_password(upass)
+    except ValidationError as e:
+        context["errmsg"] = e.messages[0]
+        return render(request, "signup.html", context)
+
+    # Check if user already exists
+    if User.objects.filter(username=uname).exists():
+        context["errmsg"] = "Username already taken."
+        return render(request, "signup.html", context)
+
+    if User.objects.filter(email=uemail).exists():
+        context["errmsg"] = "Email already registered."
+        return render(request, "signup.html", context)
+
+    # Create and save user
+    user = User(username=uname, email=uemail)
+    user.set_password(upass)  # hashes password properly
+    user.save()
+
+    return redirect("signin")
+
+
+# Signin views
+from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login
+from django.contrib import messages
+
+def signin(request):
+    context = {}
+    if request.method == "POST":
+        uname = request.POST.get("uname", "").strip()
+        upass = request.POST.get("upass", "").strip()
+
+        # Validation
+        if not uname or not upass:
+            context["errmsg"] = "All fields are required."
+            return render(request, "signin.html", context)
+
+        # Authenticate user
+        user = authenticate(request, username=uname, password=upass)
+        if user is not None:
+            login(request, user)
+            return redirect("/")  
         else:
-            try:
-                userdata = User.objects.create(username=uname, password=upass,email=uemail)
-                userdata.set_password(upass)
-                userdata.save()
-                print(User.objects.all())
-                return redirect("signin")
-            except:
-                print("User already exists")
-                context["errmsg"] = "User already exists"
-                return render(req, "signup.html", context)
-
-
-def signin(req):
-    if req.method == "POST":
-        uname = req.POST["uname"]
-        uemail=req.POST["uemail"]
-        upass = req.POST["upass"]
-        context = {}
-        if uname == "" or upass == "":
-            context["errmsg"] = "Field can't be empty"
-            return render(req, "signin.html", context)
-        else:
-            userdata = authenticate(username=uname, password=upass,email=uemail)
-            userdata = authenticate(username=uname, password=upass,email=uemail)
-            if userdata is not None:
-                login(req, userdata)
-                return redirect("/")
-            else:
-                context["errmsg"] = "Invalid username and password"
-                return render(req, "signin.html", context)
+            context["errmsg"] = "Invalid username or password."
+            return render(request, "signin.html", context)
     else:
-        return render(req, "signin.html")
+        return render(request, "signin.html")
+
 
 
 def userlogout(req):
