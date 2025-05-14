@@ -1,0 +1,77 @@
+{% extends 'base.html' %} {% load static %}
+
+{% block title %}Projects | Helping Hands{% endblock %}
+
+{% block content %}
+
+<!-- Projects Section -->
+    <section class="py-5 bg-light" id="projects">
+        <div class="container">
+            <h2 class="section-title text-center">Featured Projects</h2>
+            <p class="text-center mb-5">Some of our current initiatives making a difference</p>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="card project-card h-100">
+                        <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" class="card-img-top" alt="Project 1">
+                        <div class="card-body">
+                            <h5 class="card-title">Clean Water Initiative</h5>
+                            <p class="card-text">Providing clean drinking water to rural communities through well construction and water purification systems.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <span class="text-primary fw-bold">$25,000</span> raised of <span class="text-muted">$50,000</span>
+                                </div>
+                                <span class="badge bg-primary">Ongoing</span>
+                            </div>
+                            <div class="progress">
+                                <div class="progress-bar" style="width: 50%"></div>
+                            </div>
+                            <a href="#project1" class="btn btn-sm btn-primary mt-3">Support This Project</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card project-card h-100">
+                        <img src="https://images.unsplash.com/photo-1524179091875-bf99a9a6af57?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" class="card-img-top" alt="Project 2">
+                        <div class="card-body">
+                            <h5 class="card-title">Girls Education Program</h5>
+                            <p class="card-text">Scholarships and mentorship for girls in underserved communities to complete their secondary education.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <span class="text-primary fw-bold">$75,000</span> raised of <span class="text-muted">$100,000</span>
+                                </div>
+                                <span class="badge bg-primary">Ongoing</span>
+                            </div>
+                            <div class="progress">
+                                <div class="progress-bar" style="width: 75%"></div>
+                            </div>
+                            <a href="#project2" class="btn btn-sm btn-primary mt-3">Support This Project</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card project-card h-100">
+                        <img src="https://images.unsplash.com/photo-1573497491765-dccce02b29df?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1169&q=80" class="card-img-top" alt="Project 3">
+                        <div class="card-body">
+                            <h5 class="card-title">Disaster Relief Fund</h5>
+                            <p class="card-text">Emergency response and recovery support for communities affected by natural disasters.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <span class="text-primary fw-bold">$120,000</span> raised of <span class="text-muted">$200,000</span>
+                                </div>
+                                <span class="badge bg-primary">Ongoing</span>
+                            </div>
+                            <div class="progress">
+                                <div class="progress-bar" style="width: 60%"></div>
+                            </div>
+                            <a href="#project3" class="btn btn-sm btn-primary mt-3">Support This Project</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <a href="#all-projects" class="btn btn-primary">View All Projects</a>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

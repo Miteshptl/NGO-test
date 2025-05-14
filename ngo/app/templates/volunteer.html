@@ -1,0 +1,90 @@
+{% extends 'base.html' %} {% load static %}
+
+{% block title %}Volunteer | Helping Hands{% endblock %}
+
+{% block content %}
+
+<!-- Volunteer Section -->
+    <section class="py-5" id="volunteer">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <h2 class="mb-4">Join Our Volunteer Team</h2>
+                    <p>Volunteers are the backbone of our organization. Whether you can give a few hours a week or want to join us on a project abroad, we have opportunities to match your skills and availability.</p>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i> Local community volunteering</li>
+                        <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i> Professional skills volunteering</li>
+                        <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i> International volunteer trips</li>
+                        <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i> Virtual volunteering opportunities</li>
+                        <li><i class="fas fa-check-circle text-primary me-2"></i> Corporate volunteer programs</li>
+                    </ul>
+                    <div class="mt-4">
+                        <h5>Upcoming Volunteer Events</h5>
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="bg-primary text-white rounded p-2 me-3 text-center" style="width: 60px;">
+                                <div class="fw-bold">15</div>
+                                <div class="small">JUN</div>
+                            </div>
+                            <div>
+                                <h6 class="mb-0">Community Cleanup Day</h6>
+                                <p class="mb-0 small text-muted">Downtown Area, 9am-12pm</p>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <div class="bg-primary text-white rounded p-2 me-3 text-center" style="width: 60px;">
+                                <div class="fw-bold">22</div>
+                                <div class="small">JUN</div>
+                            </div>
+                            <div>
+                                <h6 class="mb-0">Food Packing Event</h6>
+                                <p class="mb-0 small text-muted">Central Warehouse, 10am-2pm</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="volunteer-form">
+                        <h4 class="mb-4 text-center">Volunteer Application</h4>
+                        <form>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">First Name</label>
+                                    <input type="text" class="form-control" placeholder="First Name">
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Last Name</label>
+                                    <input type="text" class="form-control" placeholder="Last Name">
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Email</label>
+                                <input type="email" class="form-control" placeholder="Email">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Phone</label>
+                                <input type="tel" class="form-control" placeholder="Phone">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Volunteer Interest</label>
+                                <select class="form-select">
+                                    <option selected>Select an option</option>
+                                    <option>Local Community Volunteering</option>
+                                    <option>Professional Skills Volunteering</option>
+                                    <option>International Volunteer Trip</option>
+                                    <option>Virtual Volunteering</option>
+                                    <option>Corporate Volunteer Program</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Tell us about your skills and interests</label>
+                                <textarea class="form-control" rows="3" placeholder="Your message"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100">Submit Application</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

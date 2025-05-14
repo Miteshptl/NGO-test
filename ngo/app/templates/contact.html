@@ -1,0 +1,71 @@
+{% extends 'base.html' %} {% load static %}
+
+{% block title %}Contact | Helping Hands{% endblock %}
+
+{% block content %}
+
+<!-- Contact Section -->
+    <section class="py-5 bg-light" id="contact">
+        <div class="container">
+            <h2 class="section-title text-center">Contact Us</h2>
+            <p class="text-center mb-5">We'd love to hear from you. Get in touch with any questions or to learn more about our work.</p>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="contact-info-box h-100">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <h5>Our Office</h5>
+                        <p>123 Helping Street<br>New York, NY 10001<br>United States</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="contact-info-box h-100">
+                        <i class="fas fa-envelope"></i>
+                        <h5>Email Us</h5>
+                        <p>info@helpinghands.org<br>donations@helpinghands.org<br>volunteer@helpinghands.org</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="contact-info-box h-100">
+                        <i class="fas fa-phone-alt"></i>
+                        <h5>Call Us</h5>
+                        <p>+1 (555) 123-4567<br>Monday - Friday<br>9am - 5pm EST</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <div class="map-container" style="overflow:hidden;border-radius:10px;">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.2152566274666!2d-73.9878449241644!3d40.74844097138893!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259a9b3117469%3A0xd134e199a405a163!2sEmpire%20State%20Building!5e0!3m2!1sen!2sus!4v1686782881231!5m2!1sen!2sus" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="contact-form bg-white p-4 rounded">
+                        <h4 class="mb-4">Send Us a Message</h4>
+                        <form>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Name</label>
+                                    <input type="text" class="form-control" placeholder="Your Name">
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Email</label>
+                                    <input type="email" class="form-control" placeholder="Your Email">
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Subject</label>
+                                <input type="text" class="form-control" placeholder="Subject">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Message</label>
+                                <textarea class="form-control" rows="5" placeholder="Your Message"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

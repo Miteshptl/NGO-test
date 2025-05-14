@@ -36,11 +36,11 @@ def projects(request):
 def media(request):
     return render(request, 'media.html')
 
-def get_involved(request):
-    return render(request, 'get_involved.html')
+def volunteer(request):
+    return render(request, 'volunteer.html')
 
-def blog(request):
-    return render(request, 'blog.html')
+def blogs(request):
+    return render(request, 'blogs.html')
 
 def contact(request):
     return render(request, 'contact.html')

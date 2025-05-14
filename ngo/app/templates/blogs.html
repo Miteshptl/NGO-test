@@ -1,0 +1,59 @@
+{% extends 'base.html' %} {% load static %}
+
+{% block title %}Blogs | Helping Hands{% endblock %}
+
+{% block content %}
+
+<!-- Blog Section -->
+    <section class="py-5" id="blog">
+        <div class="container">
+            <h2 class="section-title text-center">Latest News</h2>
+            <p class="text-center mb-5">Stories from the field and updates on our work</p>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="card blog-card h-100">
+                        <div class="position-relative">
+                            <img src="https://images.unsplash.com/photo-1522205408450-add114ad53fe?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" class="card-img-top" alt="Blog Post">
+                            <div class="blog-date">Jun 15, 2023</div>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">New School Opens in Rural Kenya</h5>
+                            <p class="card-text">Our latest education project brings hope to a community that previously had no access to formal schooling.</p>
+                            <a href="#blog1" class="btn btn-sm btn-primary">Read More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card blog-card h-100">
+                        <div class="position-relative">
+                            <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" class="card-img-top" alt="Blog Post">
+                            <div class="blog-date">May 28, 2023</div>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Women's Empowerment Program Success</h5>
+                            <p class="card-text">Graduates from our vocational training program share how it transformed their lives and livelihoods.</p>
+                            <a href="#blog2" class="btn btn-sm btn-primary">Read More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card blog-card h-100">
+                        <div class="position-relative">
+                            <img src="https://images.unsplash.com/photo-1521791055366-0d553872125f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1169&q=80" class="card-img-top" alt="Blog Post">
+                            <div class="blog-date">Apr 10, 2023</div>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Annual Impact Report Released</h5>
+                            <p class="card-text">See how your support made a difference in 2022 through our comprehensive annual report.</p>
+                            <a href="#blog3" class="btn btn-sm btn-primary">Read More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <a href="#all-blogs" class="btn btn-primary">View All News</a>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
