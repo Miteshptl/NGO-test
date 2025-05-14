@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+{% block title %}Admin Dashboard{% endblock %}
+
+{% block content %}
+<style>
+    .dashboard-card {
+        background: #ffffff;
+        border-radius: 15px;
+        box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        transition: all 0.3s ease-in-out;
+    }
+
+    .dashboard-card:hover {
+        box-shadow: 0 0 25px rgba(0,0,0,0.15);
+        transform: translateY(-3px);
+    }
+
+    .form-control:focus {
+        border-color: #007bff;
+        box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+        transition: all 0.2s ease-in-out;
+    }
+
+    .form-label {
+        font-weight: 500;
+    }
+
+    .submit-btn {
+        transition: background-color 0.3s, transform 0.2s;
+    }
+
+    .submit-btn:hover {
+        background-color: #0056b3;
+        transform: scale(1.02);
+    }
+</style>
+
+<div class="container py-5">
+    <div class="dashboard-card p-5 mx-auto" style="max-width: 750px;">
+        <h2 class="text-center mb-4 text-primary">Admin Dashboard</h2>
+        <p class="text-muted text-center mb-4">Please fill in your administrative details to help us manage your profile better.</p>
+
+        <form method="POST">
+            {% csrf_token %}
+
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label class="form-label">Full Name</label>
+                    <input type="text" name="fullname" class="form-control" required>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Email Address</label>
+                    <input type="email" name="email" class="form-control" required>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label class="form-label">Contact Number</label>
+                    <input type="tel" name="contact" class="form-control" required>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Date of Birth</label>
+                    <input type="date" name="dob" class="form-control" required>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Address</label>
+                <textarea name="address" rows="2" class="form-control" required></textarea>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label class="form-label">Department</label>
+                    <input type="text" name="department" class="form-control" required>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Position</label>
+                    <input type="text" name="position" class="form-control" placeholder="e.g. Director, Coordinator" required>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Years of Experience</label>
+                <input type="number" name="experience" class="form-control" min="0" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Admin Role Responsibilities</label>
+                <textarea name="responsibilities" rows="3" class="form-control" placeholder="Briefly describe your responsibilities" required></textarea>
+            </div>
+
+            <div class="d-grid mt-4">
+                <button type="submit" class="btn btn-primary submit-btn">Save Info</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

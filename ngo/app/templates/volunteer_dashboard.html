@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% block title %}Volunteer Dashboard{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="card shadow p-4" style="background-color: #f9f9f9;">
+        <h2 class="text-center text-primary mb-4">Volunteer Dashboard</h2>
+        <form method="POST" style="max-width: 700px; margin: auto;">
+            {% csrf_token %}
+            
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label class="form-label">Full Name</label>
+                    <input type="text" name="vol_name" class="form-control" required>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Email</label>
+                    <input type="email" name="vol_email" class="form-control" required>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label class="form-label">Phone Number</label>
+                    <input type="tel" name="vol_phone" class="form-control" required>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Date of Birth</label>
+                    <input type="date" name="vol_dob" class="form-control" required>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Address</label>
+                <textarea name="vol_address" class="form-control" rows="2" required></textarea>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Preferred Area of Work</label>
+                <input type="text" name="vol_area" class="form-control" placeholder="e.g. Teaching, Fundraising, Event Management" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Availability</label>
+                <input type="text" name="availability" class="form-control" placeholder="e.g. Weekends, Weekdays after 6 PM" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Skills & Experience</label>
+                <textarea name="vol_skills" class="form-control" rows="3" placeholder="Mention relevant skills or past volunteering experience" required></textarea>
+            </div>
+
+            <div class="mb-4">
+                <label class="form-label">Why do you want to volunteer with us?</label>
+                <textarea name="vol_reason" class="form-control" rows="3" required></textarea>
+            </div>
+
+            <div class="d-grid">
+                <button type="submit" class="btn btn-primary">Submit Information</button>
+            </div>
+        </form>
+    </div>
+
+    {% if tasks %}
+        <div class="mt-5">
+            <h4 class="text-center text-success mb-3">Your Assigned Tasks</h4>
+            <ul class="list-group">
+                {% for task in tasks %}
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        {{ task.title }}
+                        <span class="badge bg-info text-dark">{{ task.status }}</span>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

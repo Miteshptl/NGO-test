@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% block title %}Employee Dashboard{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="card shadow-lg p-4" style="background-color: #f8f9fa;">
+        <h2 class="text-center text-primary mb-4">Employee Dashboard</h2>
+        <form method="POST" style="max-width: 700px; margin: auto;">
+            {% csrf_token %}
+
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label class="form-label">Full Name</label>
+                    <input type="text" name="name" class="form-control" required>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Email Address</label>
+                    <input type="email" name="email" class="form-control" required>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label class="form-label">Contact Number</label>
+                    <input type="tel" name="contact" class="form-control" required>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Date of Birth</label>
+                    <input type="date" name="dob" class="form-control" required>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Address</label>
+                <textarea name="address" class="form-control" rows="2" required></textarea>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label class="form-label">Designation</label>
+                    <input type="text" name="role" class="form-control" required>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Department</label>
+                    <input type="text" name="department" class="form-control" required>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Joining Date</label>
+                <input type="date" name="joining_date" class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Work Experience (Years)</label>
+                <input type="number" name="experience" min="0" class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Skills</label>
+                <textarea name="skills" class="form-control" rows="3" placeholder="List relevant technical or communication skills" required></textarea>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">LinkedIn Profile (Optional)</label>
+                <input type="url" name="linkedin" class="form-control">
+            </div>
+
+            <div class="d-grid">
+                <button type="submit" class="btn btn-success">Submit Details</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
