@@ -13,4 +13,9 @@ urlpatterns = [
     path('donate/', views.donate, name='donate'),
     path('signin/',views.signin, name='signin'),
     path('signup/',views.signup, name='signup'),
+    path('request_password-reset/', views.request_password_reset, name='request_password_reset'),
+    path('dashboard/admin/', views.admin_dashboard, name='admin_dashboard'),
+    path('dashboard/employee/', views.employee_dashboard, name='employee_dashboard'),
+    path('dashboard/volunteer/', views.volunteer_dashboard, name='volunteer_dashboard'),
+    path('access-denied/', views.access_denied, name='access_denied'),
 ]

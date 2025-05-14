@@ -1,7 +1,6 @@
 from django.shortcuts import render, redirect, HttpResponse,  get_object_or_404
 from django.contrib.auth import authenticate, login, logout
 from .models import User, Contact, Media, Blog, Project, Donation, OurWork, Profile, Task
-
 from django.core.exceptions import ValidationError
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
@@ -10,7 +9,7 @@ from django.conf import settings
 from django.contrib import messages
 from django.utils import timezone
 from django.core.mail import send_mail
-
+from .models import User  
 
 
 
@@ -98,22 +97,18 @@ def donate(request):
 
 # Validation 
 def validate_password(password):
-    # Check minimum length
     if len(password) < 8:
         raise ValidationError("Password must be at least 8 characters long.")
-
-    # Check maximum length
     if len(password) > 128:
         raise ValidationError("Password cannot exceed 128 characters.")
 
-    # Initialize flags for character checks
+
     has_upper = False
     has_lower = False
     has_digit = False
     has_special = False
     special_characters = "@$!%*?&"
 
-    # Check for character variety
     for char in password:
         if char.isupper():
             has_upper = True
@@ -134,35 +129,57 @@ def validate_password(password):
         raise ValidationError(
             "Password must contain at least one special character (e.g., @$!%*?&)."
         )
-
-    # Check against common passwords
     common_passwords = [
         "password",
         "123456",
         "qwerty",
         "abc123",
-    ]  # Add more common passwords
+    ] 
     if password in common_passwords:
         raise ValidationError("This password is too common. Please choose another one.")
 
 
-from django.shortcuts import render, redirect
-from django.contrib.auth.password_validation import validate_password
-from django.core.exceptions import ValidationError
-from .models import User  # or use `from django.contrib.auth.models import User` if using default User model
 
+
+
+
+# role dashboard views
+
+@login_required
+def admin_dashboard(request):
+    if request.user.role != 'admin':
+        return redirect('access_denied')
+    return render(request, 'admin_dashboard.html')
+
+@login_required
+def employee_dashboard(request):
+    if request.user.role != 'employee':
+        return redirect('access_denied')
+    return render(request, 'employee_dashboard.html')
+
+@login_required
+def volunteer_dashboard(request):
+    if request.user.role != 'volunteer':
+        return redirect('access_denied')
+    
+    tasks = Task.objects.filter(assigned_to=request.user)
+    return render(request, 'volunteer_dashboard.html', {'tasks': tasks})
+
+def access_denied(request):
+    return render(request, 'access_denied.html')
+
+
+# signup views
 def signup(request):
     context = {}
     if request.method == "GET":
         return render(request, "signup.html")
-
-    # POST handling
+    
     uname = request.POST.get("uname", "").strip()
     uemail = request.POST.get("uemail", "").strip()
     upass = request.POST.get("upass", "")
     ucpass = request.POST.get("ucpass", "")
 
-    # Field validations
     if not uname or not uemail or not upass or not ucpass:
         context["errmsg"] = "All fields are required."
         return render(request, "signup.html", context)
@@ -179,14 +196,12 @@ def signup(request):
         context["errmsg"] = "Password cannot be the same as username."
         return render(request, "signup.html", context)
 
-    # Password validation
     try:
         validate_password(upass)
     except ValidationError as e:
         context["errmsg"] = e.messages[0]
         return render(request, "signup.html", context)
 
-    # Check if user already exists
     if User.objects.filter(username=uname).exists():
         context["errmsg"] = "Username already taken."
         return render(request, "signup.html", context)
@@ -195,49 +210,44 @@ def signup(request):
         context["errmsg"] = "Email already registered."
         return render(request, "signup.html", context)
 
-    # Create and save user
     user = User(username=uname, email=uemail)
-    user.set_password(upass)  # hashes password properly
+    user.set_password(upass)  
     user.save()
 
     return redirect("signin")
 
 
 # Signin views
-from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login
-from django.contrib import messages
-
-
 def signin(request):
     context = {}
     if request.method == "POST":
         uname = request.POST.get("uname", "").strip()
         upass = request.POST.get("upass", "").strip()
+        role = request.POST.get("role", "").strip()
 
-        # Validation
-        if not uname or not upass:
+        if not uname or not upass or not role:
             context["errmsg"] = "All fields are required."
             return render(request, "signin.html", context)
 
-        # Authenticate user
         user = authenticate(request, username=uname, password=upass)
         if user is not None:
-            login(request, user)
-            return redirect("/")  
+            if user.role == role:
+                login(request, user)
+                return redirect(f'{role}_dashboard')
+            else:
+                context["errmsg"] = f"You are not authorized as {role.title()}."
         else:
             context["errmsg"] = "Invalid username or password."
-            return render(request, "signin.html", context)
-    else:
-        return render(request, "signin.html")
+
+    return render(request, "signin.html", context)
 
 
-
+# Logout views
 def userlogout(req):
     logout(req)
     return redirect("/")
 
-
+# request Reset password views
 def request_password_reset(req):
     if req.method == "GET":
         return render(req, "request_password_reset.html")
@@ -250,8 +260,7 @@ def request_password_reset(req):
             # Generate OTP and store in session
             userotp = random.randint(100000, 999999)
             req.session["otp"] = userotp
-            req.session["uemail"] = userdata.email  # Save email to session
-
+            req.session["uemail"] = userdata.email  
             # Send OTP via email
             subject = " NGO - OTP for Reset Password"
             message = f"""
@@ -276,7 +285,7 @@ def request_password_reset(req):
             context["errmsg"] = "No account found with this username"
             return render(req, "request_password_reset.html", context)
 
-
+# reset password Views
 def reset_password(req, uname):
     userdata = User.objects.get(username=uname)
     if req.method == "GET":
