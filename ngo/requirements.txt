@@ -1,0 +1,6 @@
+django
+setuptools 
+pillow
+razorpay
+django-crispy-forms
+crispy-bootstrap5
