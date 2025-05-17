@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import User, Contact, Media, Blog, Project, Donation, OurWork, Profile, Task
+from .models import User, Contact, Media, Blog, Project, Donation, OurWork, Admin_profile, Task,Emp_Profile,Vol_Profile
 
 @admin.register(User)
 class UserAdmin(admin.ModelAdmin):
@@ -37,8 +37,8 @@ class DonationAdmin(admin.ModelAdmin):
 class OurWorkAdmin(admin.ModelAdmin):
     list_display = ('title', 'created_at')
 
-@admin.register(Profile)
-class ProfileAdmin(admin.ModelAdmin):
+@admin.register(Admin_profile)
+class Admin_profileAdmin(admin.ModelAdmin):
     list_display = ('full_name', 'user', 'gender', 'mobile_number', 'email')
 
 @admin.register(Task)
@@ -46,3 +46,12 @@ class TaskAdmin(admin.ModelAdmin):
     list_display = ('title', 'assigned_to', 'due_date', 'completed', 'created_at')
     list_filter = ('completed',)
     search_fields = ('title', 'assigned_to__username')
+
+@admin.register(Emp_Profile)
+class Emp_ProfileAdmin(admin.ModelAdmin):
+    list_display = ('full_name', 'user', 'gender', 'mobile_number', 'email')
+
+@admin.register(Vol_Profile)
+class Vol_ProfileAdmin(admin.ModelAdmin):
+    list_display = ('full_name', 'user', 'gender', 'mobile_number', 'email')
+    

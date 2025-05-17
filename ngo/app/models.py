@@ -89,18 +89,18 @@ class OurWork(models.Model):
 def get_default_user():
     return User.objects.first().id
 
-class Profile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE,default=get_default_user)  
-    full_name=models.CharField(max_length=50)
-    gender_choices=(("Male","Male"),("Female","Female"),("Other","Other"))
-    gender=models.CharField(max_length=50,choices=gender_choices)
-    date_of_birth=models.DateField()
-    mobile_number=models.CharField(max_length=10)
-    email=models.CharField(max_length=50)
-    address=models.TextField()
-    image=models.ImageField(upload_to="./profile/images/")
-    def __str__(self):
-        return self.full_name
+# class Profile(models.Model):
+#     user = models.OneToOneField(User, on_delete=models.CASCADE,default=get_default_user)  
+#     full_name=models.CharField(max_length=50)
+#     gender_choices=(("Male","Male"),("Female","Female"),("Other","Other"))
+#     gender=models.CharField(max_length=50,choices=gender_choices)
+#     date_of_birth=models.DateField()
+#     mobile_number=models.CharField(max_length=10)
+#     email=models.CharField(max_length=50)
+#     address=models.TextField()
+#     image=models.ImageField(upload_to="./profile/images/")
+#     def __str__(self):
+#         return self.full_name
 
 # Task model
 class Task(models.Model):
@@ -113,3 +113,42 @@ class Task(models.Model):
 
     def __str__(self):
         return self.title
+    
+class Admin_profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE,default=get_default_user)  
+    full_name=models.CharField(max_length=50)
+    gender_choices=(("Male","Male"),("Female","Female"),("Other","Other"))
+    gender=models.CharField(max_length=50,choices=gender_choices)
+    date_of_birth=models.DateField()
+    mobile_number=models.CharField(max_length=10)
+    email=models.CharField(max_length=50)
+    address=models.TextField()
+    image=models.ImageField(upload_to="./profile/images/")
+    def __str__(self):
+        return self.full_name
+    
+class Emp_Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE,default=get_default_user)  
+    full_name=models.CharField(max_length=50)
+    gender_choices=(("Male","Male"),("Female","Female"),("Other","Other"))
+    gender=models.CharField(max_length=50,choices=gender_choices)
+    date_of_birth=models.DateField()
+    mobile_number=models.CharField(max_length=10)
+    email=models.CharField(max_length=50)
+    address=models.TextField()
+    image=models.ImageField(upload_to="./profile/images/")
+    def __str__(self):
+        return self.full_name
+    
+class Vol_Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE,default=get_default_user)  
+    full_name=models.CharField(max_length=50)
+    gender_choices=(("Male","Male"),("Female","Female"),("Other","Other"))
+    gender=models.CharField(max_length=50,choices=gender_choices)
+    date_of_birth=models.DateField()
+    mobile_number=models.CharField(max_length=10)
+    email=models.CharField(max_length=50)
+    address=models.TextField()
+    image=models.ImageField(upload_to="./profile/images/")
+    def __str__(self):
+        return self.full_name
