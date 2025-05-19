@@ -139,7 +139,9 @@ def validate_password(password):
         raise ValidationError("This password is too common. Please choose another one.")
 
 
-
+@login_required
+def task(request):
+    return render(request, 'task.html')
 
 
 

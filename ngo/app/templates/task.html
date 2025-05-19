@@ -1,0 +1,171 @@
+{% extends 'base.html' %}
+{% block title %}Tasks Dashboard{% endblock %}
+
+{% block content %}
+<style>
+.dashboard-container {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 40px;
+}
+
+.sidebar {
+    flex: 0 0 30%;
+    max-width: 30%;
+    background-color: var(--light-color);
+    padding: 20px;
+    border-right: 2px solid #ddd;
+    min-height: 80vh;
+}
+
+.content-area {
+    flex: 0 0 70%;
+    max-width: 70%;
+    padding: 20px;
+}
+
+.nav-link.active {
+    background-color: var(--secondary-color);
+    color: white !important;
+}
+
+.nav-link {
+    padding: 10px;
+    margin-bottom: 5px;
+    display: block;
+    border-radius: 5px;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.nav-link:hover {
+    background-color: var(--secondary-color);
+    color: white !important;
+}
+
+.table-wrapper {
+    overflow-x: auto;
+}
+
+.add-btn {
+    float: right;
+    margin-bottom: 10px;
+}
+
+@media(max-width: 768px) {
+    .sidebar, .content-area {
+    max-width: 100%;
+    flex: 100%;
+    }
+}
+</style>
+
+<div class="container dashboard-container">
+<!-- Sidebar Navigation -->
+<div class="sidebar">
+    <h5 class="mb-4">NGO Dashboard</h5>
+    <a class="nav-link" href="#ourwork" onclick="showTab('ourwork')">Our Work</a>
+    <a class="nav-link" href="#blogs" onclick="showTab('blogs')">Blogs</a>
+    <a class="nav-link" href="#media" onclick="showTab('media')">Media</a>
+    <a class="nav-link" href="#projects" onclick="showTab('projects')">Projects</a>
+    <a class="nav-link" href="#tasks" onclick="showTab('tasks')">Tasks</a>
+</div>
+
+<!-- Content Display Area -->
+<div class="content-area">
+    <div id="ourwork" class="tab-content">
+    <h4>Our Work</h4>
+    {% if user.role != 'volunteer' %}
+    <button class="btn btn-primary add-btn">+ Add Work</button>
+    {% endif %}
+    <div class="table-wrapper">
+        <table class="table table-bordered">
+        <thead><tr><th>Title</th><th>Description</th></tr></thead>
+        <tbody>
+            <tr><td>Education Programs</td><td>Free education for children in slums</td></tr>
+            <tr><td>Healthcare</td><td>Mobile clinics every weekend</td></tr>
+        </tbody>
+        </table>
+    </div>
+    </div>
+
+    <div id="blogs" class="tab-content" style="display:none">
+    <h4>Blogs</h4>
+    {% if user.role != 'volunteer' %}
+    <button class="btn btn-primary add-btn">+ Add Blog</button>
+    {% endif %}
+    <div class="table-wrapper">
+        <table class="table table-bordered">
+        <thead><tr><th>Title</th><th>Date</th></tr></thead>
+        <tbody>
+            <tr><td>Impact of Volunteering</td><td>2024-03-12</td></tr>
+            <tr><td>Women's Health Awareness</td><td>2024-02-18</td></tr>
+        </tbody>
+        </table>
+    </div>
+    </div>
+
+    <div id="media" class="tab-content" style="display:none">
+    <h4>Media</h4>
+    {% if user.role != 'volunteer' %}
+    <button class="btn btn-primary add-btn">+ Add Media</button>
+    {% endif %}
+    <div class="table-wrapper">
+        <table class="table table-bordered">
+        <thead><tr><th>Media Type</th><th>Link</th></tr></thead>
+        <tbody>
+            <tr><td>Video</td><td><a href="#">Launch Event</a></td></tr>
+            <tr><td>Photo Album</td><td><a href="#">School Visit Gallery</a></td></tr>
+        </tbody>
+        </table>
+    </div>
+    </div>
+
+    <div id="projects" class="tab-content" style="display:none">
+    <h4>Projects</h4>
+    {% if user.role != 'volunteer' %}
+    <button class="btn btn-primary add-btn">+ Add Project</button>
+    {% endif %}
+    <div class="table-wrapper">
+        <table class="table table-bordered">
+        <thead><tr><th>Name</th><th>Status</th></tr></thead>
+        <tbody>
+            <tr><td>Clean Water</td><td>Ongoing</td></tr>
+            <tr><td>Computer Education</td><td>Completed</td></tr>
+        </tbody>
+        </table>
+    </div>
+    </div>
+
+    <div id="tasks" class="tab-content" style="display:none">
+    <h4>Tasks</h4>
+    {% if user.role != 'volunteer' %}
+    <button class="btn btn-primary add-btn">+ Add Task</button>
+    {% endif %}
+    <div class="table-wrapper">
+        <table class="table table-bordered">
+        <thead><tr><th>Assigned To</th><th>Task</th><th>Status</th></tr></thead>
+        <tbody>
+            <tr><td>Volunteer A</td><td>Distribute supplies</td><td>Pending</td></tr>
+            <tr><td>Employee B</td><td>Submit report</td><td>Completed</td></tr>
+        </tbody>
+        </table>
+    </div>
+    </div>
+</div>
+</div>
+
+<script>
+function showTab(tabId) {
+    const tabs = document.querySelectorAll('.tab-content');
+    tabs.forEach(tab => tab.style.display = 'none');
+
+    document.getElementById(tabId).style.display = 'block';
+
+    const links = document.querySelectorAll('.sidebar .nav-link');
+    links.forEach(link => link.classList.remove('active'));
+
+    const activeLink = document.querySelector(`.sidebar .nav-link[href="#${tabId}"]`);
+    if (activeLink) activeLink.classList.add('active');
+}
+</script>
+{% endblock %}
