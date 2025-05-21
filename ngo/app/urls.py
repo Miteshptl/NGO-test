@@ -20,4 +20,11 @@ urlpatterns = [
     path('dashboard/volunteer/', views.volunteer_dashboard, name='volunteer_dashboard'),
     path('task/', views.task, name='task'),
     path('access-denied/', views.access_denied, name='access_denied'),
+    path('add-task/', views.add_task, name='add_task'),
+    path('add-blog/', views.add_blog, name='add_blog'),
+    path('add-project/', views.add_project, name='add_project'),
+    path('add-media/', views.add_media, name='add_media'),
+    path('add-ourwork/', views.add_ourwork, name='add_ourwork'),
+    path('payment-success/', views.payment_success, name='payment_success'),
+
 ]

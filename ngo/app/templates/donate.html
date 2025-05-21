@@ -1,67 +1,110 @@
-{% extends 'base.html' %} {% load static %}
+{% extends 'base.html' %}
+{% load static %}
 
 {% block title %}Donate | Helping Hands{% endblock %}
 
 {% block content %}
 
 <!-- Donate Section -->
-    <section class="py-5 bg-primary text-white" id="donate">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6 mb-4 mb-lg-0">
-                    <h2 class="mb-4">Your Support Makes a Difference</h2>
-                    <p>Every donation, no matter the size, helps us continue our vital work in communities around the world. 100% of your donation goes directly to programs.</p>
-                    <ul class="list-unstyled">
-                        <li class="mb-2"><i class="fas fa-check-circle me-2"></i> $25 provides school supplies for one child</li>
-                        <li class="mb-2"><i class="fas fa-check-circle me-2"></i> $50 provides clean water for a family for a month</li>
-                        <li class="mb-2"><i class="fas fa-check-circle me-2"></i> $100 provides vocational training for one person</li>
-                        <li><i class="fas fa-check-circle me-2"></i> $500 helps build a classroom</li>
-                    </ul>
-                </div>
-                <div class="col-lg-6">
-                    <div class="donation-form">
-                        <h4 class="mb-4 text-center">Make a Donation</h4>
-                        <form>
-                            <div class="mb-3">
-                                <label class="form-label">Amount (USD)</label>
-                                <div class="input-group">
-                                    <span class="input-group-text">$</span>
-                                    <input type="number" class="form-control" placeholder="Enter amount" min="1">
-                                </div>
+<section class="py-5 bg-primary text-white" id="donate">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 mb-4 mb-lg-0">
+                <h2 class="mb-4">Your Support Makes a Difference</h2>
+                <p>Every donation helps us continue our vital work in communities. 100% of your donation goes directly to our causes.</p>
+                <ul class="list-unstyled">
+                    <li class="mb-2"><i class="fas fa-check-circle me-2"></i> ₹500: School supplies for one child</li>
+                    <li class="mb-2"><i class="fas fa-check-circle me-2"></i> ₹1000: Clean water for a family</li>
+                    <li class="mb-2"><i class="fas fa-check-circle me-2"></i> ₹2000: Vocational training for one person</li>
+                    <li><i class="fas fa-check-circle me-2"></i> ₹10000: Help build a classroom</li>
+                </ul>
+            </div>
+            <div class="col-lg-6">
+                <div class="donation-form bg-white text-dark p-4 rounded shadow">
+                    <h4 class="mb-4 text-center">Make a Donation</h4>
+                    <form id="donationForm" method="post">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label class="form-label">Amount (INR)</label>
+                            <div class="input-group">
+                                <span class="input-group-text">₹</span>
+                                <input type="number" name="amount" id="amount" class="form-control" placeholder="Enter amount" min="1" required>
                             </div>
-                            <div class="mb-3">
-                                <label class="form-label">Donation Type</label>
-                                <select class="form-select">
-                                    <option selected>One-time donation</option>
-                                    <option>Monthly donation</option>
-                                    <option>In honor/memory of someone</option>
-                                </select>
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label">Payment Method</label>
-                                <div class="d-flex gap-3">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="payment" id="creditCard" checked>
-                                        <label class="form-check-label" for="creditCard">
-                                            <i class="fab fa-cc-visa me-1"></i>
-                                            <i class="fab fa-cc-mastercard me-1"></i>
-                                            <i class="fab fa-cc-amex"></i>
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="payment" id="paypal">
-                                        <label class="form-check-label" for="paypal">
-                                            <i class="fab fa-cc-paypal"></i>
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                            <button type="submit" class="btn btn-accent w-100">Donate Now</button>
-                        </form>
-                    </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Message (Optional)</label>
+                            <textarea name="message" class="form-control" rows="2"></textarea>
+                        </div>
+                        <div class="form-check mb-3">
+                            <input class="form-check-input" type="checkbox" name="anonymous" id="anonymous">
+                            <label class="form-check-label" for="anonymous">
+                                Donate anonymously
+                            </label>
+                        </div>
+                        <button type="submit" class="btn btn-success w-100" id="rzp-button">Donate Now</button>
+                    </form>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
+<!-- Razorpay Script -->
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+    document.getElementById("donationForm").addEventListener("submit", async function (e) {
+        e.preventDefault();
+
+        const amount = document.getElementById("amount").value;
+        if (!amount || amount <= 0) {
+            alert("Please enter a valid donation amount.");
+            return;
+        }
+
+        // Get CSRF token from the form
+        const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+
+        const response = await fetch("{% url 'donate' %}", {
+            method: "POST",
+            headers: {
+                "X-CSRFToken": csrfToken,
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                amount: amount,
+                message: document.querySelector('[name=message]').value,
+                anonymous: document.getElementById("anonymous").checked
+            })
+        });
+
+        const data = await response.json();
+        if (!data.order_id) {
+            alert("Something went wrong with the server.");
+            return;
+        }
+
+        const options = {
+            key: "{{ RAZORPAY_API_KEY }}", // Replace with settings.RAZORPAY_API_KEY via context
+            amount: data.amount,
+            currency: "INR",
+            name: "Helping Hands NGO",
+            description: "Donation",
+            order_id: data.order_id,
+            handler: function (response) {
+                window.location.href = "{% url 'payment_success' %}?payment_id=" + response.razorpay_payment_id;
+            },
+            prefill: {
+                name: "{{ user.get_full_name|default:'' }}",
+                email: "{{ user.email|default:'' }}",
+                contact: "{{ user.phone|default:'' }}"
+            },
+            theme: {
+                color: "#28a745"
+            }
+        };
+
+        const rzp = new Razorpay(options);
+        rzp.open();
+    });
+</script>
 {% endblock %}

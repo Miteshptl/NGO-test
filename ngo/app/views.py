@@ -313,3 +313,134 @@ def reset_password(req, uname):
         except ValidationError as e:
             context["errmsg"] = str(e)
             return render(req, "reset_password.html", context)
+
+
+@login_required
+def add_task(request):
+    if request.user.role not in ['admin', 'employee']:
+        return redirect('access_denied')
+    
+    if request.method == 'POST':
+        assigned_to_id = request.POST['assigned_to']
+        task = Task.objects.create(
+            assigned_to=User.objects.get(id=assigned_to_id),
+            title=request.POST['title'],
+            description=request.POST['description'],
+            due_date=request.POST['due_date']
+        )
+        return redirect('task')
+    
+    users = User.objects.filter(role__in=['employee', 'volunteer'])
+    return render(request, 'add_task.html', {'users': users})
+
+
+@login_required
+def add_blog(request):
+    if request.user.role not in ['admin', 'employee']:
+        return redirect('access_denied')
+    
+    if request.method == 'POST':
+        blog = Blog(
+            title=request.POST['title'],
+            content=request.POST['content'],
+            author=request.user,
+            published='published' in request.POST
+        )
+        if 'image' in request.FILES:
+            blog.image = request.FILES['image']
+        blog.save()
+        return redirect('task')
+    
+    return render(request, 'add_blog.html')
+
+
+@login_required
+def add_project(request):
+    if request.user.role not in ['admin', 'employee']:
+        return redirect('access_denied')
+
+    if request.method == 'POST':
+        Project.objects.create(
+            name=request.POST['name'],
+            description=request.POST['description'],
+            start_date=request.POST['start_date'],
+            end_date=request.POST.get('end_date') or None,
+            is_active='is_active' in request.POST
+        )
+        return redirect('task')
+    
+    return render(request, 'add_project.html')
+
+
+@login_required
+def add_media(request):
+    if request.user.role not in ['admin', 'employee']:
+        return redirect('access_denied')
+
+    if request.method == 'POST':
+        Media.objects.create(
+            title=request.POST['title'],
+            media_type=request.POST['media_type'],
+            file=request.FILES['file']
+        )
+        return redirect('task')
+    
+    return render(request, 'add_media.html')
+
+
+@login_required
+def add_ourwork(request):
+    if request.user.role not in ['admin', 'employee']:
+        return redirect('access_denied')
+
+    if request.method == 'POST':
+        OurWork.objects.create(
+            title=request.POST['title'],
+            summary=request.POST['summary'],
+            image=request.FILES['image']
+        )
+        return redirect('task')
+    
+    return render(request, 'add_ourwork.html')
+
+def payment_success(request):
+    return render(request, 'payment_success.html')
+
+
+from django.http import JsonResponse
+import razorpay
+
+client = razorpay.Client(auth=(settings.RAZORPAY_KEY_ID, settings.RAZORPAY_KEY_SECRET))
+
+@login_required
+@csrf_exempt
+def donate(request):
+    if request.method == "POST" and request.headers.get("Content-Type") == "application/json":
+        import json
+        body = json.loads(request.body)
+        amount = int(body.get("amount", 0)) * 100  # Razorpay uses paise
+        message = body.get("message", "")
+        is_anonymous = body.get("anonymous", False)
+
+        order = client.order.create({
+            "amount": amount,
+            "currency": "INR",
+            "payment_capture": 1
+        })
+
+        # Optionally store in DB now or after success
+        Donation.objects.create(
+            user=request.user if not is_anonymous else None,
+            amount=amount / 100,
+            message=message,
+            is_anonymous=is_anonymous
+        )
+
+        return JsonResponse({
+            "order_id": order['id'],
+            "amount": order['amount']
+        })
+
+    return render(request, "donate.html", {
+        "RAZORPAY_API_KEY": settings.RAZORPAY_KEY_ID
+    })

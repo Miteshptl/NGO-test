@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}Payment Successful{% endblock %}
+
+{% block content %}
+<div class="container text-center mt-5">
+    <div class="card shadow p-4">
+        <div class="card-body">
+            <h1 class="text-success"><i class="fas fa-check-circle"></i> Thank You!</h1>
+            <p class="lead mt-3">Your payment was successful.</p>
+            <p>We appreciate your support for Helping Hands NGO.</p>
+            <hr>
+            <a href="{% url 'index' %}" class="btn btn-primary mt-3">Return to Home</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

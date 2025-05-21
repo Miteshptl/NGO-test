@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %}Add Media{% endblock %}
+{% block content %}
+<div class="container mt-5">
+<h2>Add Media</h2>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="mb-3">
+    <label class="form-label">Title</label>
+    <input type="text" name="title" class="form-control" required>
+    </div>
+    <div class="mb-3">
+    <label class="form-label">Type</label>
+    <select class="form-select" name="media_type" required>
+        <option value="image">Image</option>
+        <option value="video">Video</option>
+        <option value="document">Document</option>
+    </select>
+    </div>
+    <div class="mb-3">
+    <label class="form-label">Upload File</label>
+    <input type="file" name="file" class="form-control" required>
+    </div>
+    <button type="submit" class="btn btn-success">Add Media</button>
+</form>
+</div>
+{% endblock %}

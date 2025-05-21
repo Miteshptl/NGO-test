@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %}Add Our Work{% endblock %}
+{% block content %}
+<div class="container mt-5">
+<h2>Add Our Work</h2>
+<form method="post" enctype="multipart/form-data">
+{% csrf_token %}
+<div class="mb-3">
+    <label class="form-label">Title</label>
+    <input type="text" name="title" class="form-control" required>
+</div>
+<div class="mb-3">
+    <label class="form-label">Summary</label>
+    <textarea name="summary" class="form-control" required></textarea>
+</div>
+<div class="mb-3">
+    <label class="form-label">Image</label>
+    <input type="file" name="image" class="form-control" required>
+</div>
+<button type="submit" class="btn btn-primary">Add Work</button>
+</form>
+</div>
+{% endblock %}

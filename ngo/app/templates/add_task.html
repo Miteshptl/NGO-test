@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block title %}Add Task{% endblock %}
+{% block content %}
+<div class="container mt-5">
+<h2>Add New Task</h2>
+<form method="post">
+    {% csrf_token %}
+    <div class="mb-3">
+    <label for="assigned_to" class="form-label">Assign To</label>
+    <select class="form-select" name="assigned_to" required>
+        {% for user in users %}
+        <option value="{{ user.id }}">{{ user.username }}</option>
+        {% endfor %}
+    </select>
+    </div>
+    <div class="mb-3">
+    <label class="form-label">Title</label>
+    <input type="text" name="title" class="form-control" required>
+    </div>
+    <div class="mb-3">
+    <label class="form-label">Description</label>
+    <textarea name="description" class="form-control" required></textarea>
+    </div>
+    <div class="mb-3">
+    <label class="form-label">Due Date</label>
+    <input type="date" name="due_date" class="form-control" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Add Task</button>
+</form>
+</div>
+{% endblock %}
+    

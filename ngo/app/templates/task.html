@@ -75,7 +75,7 @@
     <div id="ourwork" class="tab-content">
     <h4>Our Work</h4>
     {% if user.role != 'volunteer' %}
-    <button class="btn btn-primary add-btn">+ Add Work</button>
+    <a href="{% url 'add_ourwork' %}" class="btn btn-primary add-btn">+ Add Work</a>
     {% endif %}
     <div class="table-wrapper">
         <table class="table table-bordered">
@@ -91,7 +91,7 @@
     <div id="blogs" class="tab-content" style="display:none">
     <h4>Blogs</h4>
     {% if user.role != 'volunteer' %}
-    <button class="btn btn-primary add-btn">+ Add Blog</button>
+    <a href="{% url 'add_blog' %}" class="btn btn-primary add-btn">+ Add Blog</a>
     {% endif %}
     <div class="table-wrapper">
         <table class="table table-bordered">
@@ -107,7 +107,7 @@
     <div id="media" class="tab-content" style="display:none">
     <h4>Media</h4>
     {% if user.role != 'volunteer' %}
-    <button class="btn btn-primary add-btn">+ Add Media</button>
+    <a href="{% url 'add_media' %}" class="btn btn-primary add-btn">+ Add Media</a>
     {% endif %}
     <div class="table-wrapper">
         <table class="table table-bordered">
@@ -123,7 +123,7 @@
     <div id="projects" class="tab-content" style="display:none">
     <h4>Projects</h4>
     {% if user.role != 'volunteer' %}
-    <button class="btn btn-primary add-btn">+ Add Project</button>
+    <a href="{% url 'add_project' %}" class="btn btn-primary add-btn">+ Add Project</a>
     {% endif %}
     <div class="table-wrapper">
         <table class="table table-bordered">
@@ -139,7 +139,7 @@
     <div id="tasks" class="tab-content" style="display:none">
     <h4>Tasks</h4>
     {% if user.role != 'volunteer' %}
-    <button class="btn btn-primary add-btn">+ Add Task</button>
+    <a href="{% url 'add_task' %}" class="btn btn-primary add-btn">+ Add Task</a>
     {% endif %}
     <div class="table-wrapper">
         <table class="table table-bordered">
