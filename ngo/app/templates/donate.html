@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Donate | Helping Hands{% endblock %}
+{% block title %}Donate | Dis NGO's 4 Every1{% endblock %}
 
 {% block content %}
 
@@ -87,7 +87,7 @@
             key: "{{ RAZORPAY_API_KEY }}", // Replace with settings.RAZORPAY_API_KEY via context
             amount: data.amount,
             currency: "INR",
-            name: "Helping Hands NGO",
+            name: "Dis NGO's 4 Every1 NGO",
             description: "Donation",
             order_id: data.order_id,
             handler: function (response) {
