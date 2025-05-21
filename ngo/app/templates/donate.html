@@ -93,11 +93,12 @@
             handler: function (response) {
                 window.location.href = "{% url 'payment_success' %}?payment_id=" + response.razorpay_payment_id;
             },
-            prefill: {
-                name: "{{ user.get_full_name|default:'' }}",
-                email: "{{ user.email|default:'' }}",
-                contact: "{{ user.phone|default:'' }}"
+            "prefill": {
+                "name": "{{ user.get_full_name|default_if_none:'' }}",
+                "email": "{{ user.email|default_if_none:'' }}",
+                "contact": "{{ user.phone|default_if_none:'' }}"
             },
+
             theme: {
                 color: "#28a745"
             }

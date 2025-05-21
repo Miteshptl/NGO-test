@@ -407,18 +407,18 @@ def payment_success(request):
     return render(request, 'payment_success.html')
 
 
+from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 import razorpay
 
 client = razorpay.Client(auth=(settings.RAZORPAY_KEY_ID, settings.RAZORPAY_KEY_SECRET))
 
-@login_required
 @csrf_exempt
 def donate(request):
     if request.method == "POST" and request.headers.get("Content-Type") == "application/json":
         import json
         body = json.loads(request.body)
-        amount = int(body.get("amount", 0)) * 100  # Razorpay uses paise
+        amount = int(body.get("amount", 0)) * 100  # Razorpay needs paise
         message = body.get("message", "")
         is_anonymous = body.get("anonymous", False)
 
@@ -428,9 +428,11 @@ def donate(request):
             "payment_capture": 1
         })
 
-        # Optionally store in DB now or after success
+        # Save donation even for guests
+        user = request.user if request.user.is_authenticated and not is_anonymous else None
+
         Donation.objects.create(
-            user=request.user if not is_anonymous else None,
+            user=user,
             amount=amount / 100,
             message=message,
             is_anonymous=is_anonymous
